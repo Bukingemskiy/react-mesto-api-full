@@ -1,0 +1,17 @@
+.header__close {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../../images/Add.svg);
+  transform: rotate(45deg);
+  color: #ffffff;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: opacity 1s ease;
+  cursor: pointer;
+  margin: auto 30px auto 0;
+}
+
+.header__close:hover {
+  opacity: 0.6;
+}

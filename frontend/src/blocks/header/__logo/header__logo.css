@@ -1,0 +1,21 @@
+.header__logo {
+  width: 142px;
+  height: 33px;
+  background-image: url(../../../images/Mesto.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-image 1.5s linear;
+}
+
+@media screen and (max-width: 767px) {
+  .header__logo {
+    width: 103.74px;
+    height: 24.4px;
+    margin: auto 0 auto 30px;
+  }
+}
+
+.header__logo:hover {
+  background-image: url(../../../images/Mesto-black.svg);
+}

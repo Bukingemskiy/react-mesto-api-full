@@ -1,0 +1,8 @@
+.element__delete_visible {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.element__delete_visible:hover {
+    opacity: 0.6;
+}

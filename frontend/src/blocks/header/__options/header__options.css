@@ -1,0 +1,15 @@
+.header__options {
+  width: 24px;
+  height: 18px;
+  background-image: url(../../../images/Options.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: opacity 1s ease;
+  cursor: pointer;
+  margin: auto 30px auto 0;
+}
+
+.header__options:hover {
+  opacity: 0.6;
+}
