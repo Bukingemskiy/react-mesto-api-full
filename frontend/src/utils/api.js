@@ -98,7 +98,7 @@ class Api {
 }
 
 const config = {
-  address: "https://mesto.nomoreparties.co/v1/",
+  address: "http://api.project.mesto.nomoredomains.rocks",
   token: "22c6286b-d5fa-40bf-b483-a71816fa51e0",
   cohortId: "cohort-24",
 };
