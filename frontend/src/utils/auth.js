@@ -1,4 +1,4 @@
-export const BASE_URL = "https://api.project.mesto.nomoredomains.rocks";
+export const BASE_URL = "https://auth.nomoreparties.co";
 
 function getAnswer(res) {
   if (res.ok) {
@@ -39,7 +39,6 @@ export function userToken(token) {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
-      Accept: "application/json",
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
