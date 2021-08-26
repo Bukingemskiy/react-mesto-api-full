@@ -1,8 +1,7 @@
 class Api {
-  constructor({ address, token, cohortId }) {
+  constructor({ address, token }) {
     this._address = address;
     this._token = token;
-    this._cohortId = cohortId;
   }
 
   _getAnswer(res) {
@@ -13,7 +12,7 @@ class Api {
   }
 
   getUserData() {
-    return fetch(`${this._address}${this._cohortId}/users/me `, {
+    return fetch(`${this._address}/users/me `, {
       headers: {
         authorization: this._token,
       },
@@ -21,7 +20,7 @@ class Api {
   }
 
   editProfile(data) {
-    return fetch(`${this._address}${this._cohortId}/users/me `, {
+    return fetch(`${this._address}/users/me `, {
       method: "PATCH",
       headers: {
         authorization: this._token,
@@ -32,7 +31,7 @@ class Api {
   }
 
   updateImage(data) {
-    return fetch(`${this._address}${this._cohortId}/users/me/avatar `, {
+    return fetch(`${this._address}/users/me/avatar `, {
       method: "PATCH",
       headers: {
         authorization: this._token,
@@ -43,7 +42,7 @@ class Api {
   }
 
   makeCard(data) {
-    return fetch(`${this._address}${this._cohortId}/cards`, {
+    return fetch(`${this._address}/cards`, {
       method: "POST",
       headers: {
         authorization: this._token,
@@ -54,7 +53,7 @@ class Api {
   }
 
   getCards() {
-    return fetch(`${this._address}${this._cohortId}/cards`, {
+    return fetch(`${this._address}/cards`, {
       headers: {
         authorization: this._token,
       },
@@ -62,7 +61,7 @@ class Api {
   }
 
   deleteCard(id) {
-    return fetch(`${this._address}${this._cohortId}/cards/${id}`, {
+    return fetch(`${this._address}/cards/${id}`, {
       method: "DELETE",
       headers: {
         authorization: this._token,
@@ -71,7 +70,7 @@ class Api {
   }
 
   likeOn(id) {
-    return fetch(`${this._address}${this._cohortId}/cards/likes/${id}`, {
+    return fetch(`${this._address}/cards/likes/${id}`, {
       method: "PUT",
       headers: {
         authorization: this._token,
@@ -80,7 +79,7 @@ class Api {
   }
 
   likeOff(id) {
-    return fetch(`${this._address}${this._cohortId}/cards/likes/${id}`, {
+    return fetch(`${this._address}/cards/likes/${id}`, {
       method: "DELETE",
       headers: {
         authorization: this._token,
@@ -99,8 +98,6 @@ class Api {
 
 const config = {
   address: "http://api.project.mesto.nomoredomains.rocks",
-  token: "22c6286b-d5fa-40bf-b483-a71816fa51e0",
-  cohortId: "/cohort-24",
 };
 
 const api = new Api(config);
