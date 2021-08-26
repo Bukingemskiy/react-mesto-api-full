@@ -1,7 +1,6 @@
 class Api {
-  constructor({ address, token }) {
+  constructor({ address }) {
     this._address = address;
-    this._token = token;
   }
 
   _getAnswer(res) {
@@ -12,18 +11,15 @@ class Api {
   }
 
   getUserData() {
-    return fetch(`${this._address}/users/me `, {
-      headers: {
-        authorization: this._token,
-      },
-    }).then((res) => this._getAnswer(res));
+    return fetch(`${this._address}/users/me `).then((res) =>
+      this._getAnswer(res)
+    );
   }
 
   editProfile(data) {
     return fetch(`${this._address}/users/me `, {
       method: "PATCH",
       headers: {
-        authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: data.name, about: data.about }),
@@ -34,7 +30,6 @@ class Api {
     return fetch(`${this._address}/users/me/avatar `, {
       method: "PATCH",
       headers: {
-        authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ avatar: data.avatar }),
@@ -45,7 +40,6 @@ class Api {
     return fetch(`${this._address}/cards`, {
       method: "POST",
       headers: {
-        authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: data.name, link: data.link }),
@@ -53,37 +47,24 @@ class Api {
   }
 
   getCards() {
-    return fetch(`${this._address}/cards`, {
-      headers: {
-        authorization: this._token,
-      },
-    }).then((res) => this._getAnswer(res));
+    return fetch(`${this._address}/cards`).then((res) => this._getAnswer(res));
   }
 
   deleteCard(id) {
     return fetch(`${this._address}/cards/${id}`, {
       method: "DELETE",
-      headers: {
-        authorization: this._token,
-      },
     }).then((res) => this._getAnswer(res));
   }
 
   likeOn(id) {
     return fetch(`${this._address}/cards/likes/${id}`, {
       method: "PUT",
-      headers: {
-        authorization: this._token,
-      },
     }).then((res) => this._getAnswer(res));
   }
 
   likeOff(id) {
     return fetch(`${this._address}/cards/likes/${id}`, {
       method: "DELETE",
-      headers: {
-        authorization: this._token,
-      },
     }).then((res) => this._getAnswer(res));
   }
 
