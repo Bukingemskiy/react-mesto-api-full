@@ -1,9 +1,14 @@
+/* eslint-disable consistent-return */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable func-names */
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-console */
 /* eslint-disable quotes */
 
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const { errors, celebrate, Joi } = require("celebrate");
@@ -24,9 +29,31 @@ mongoose.connect("mongodb://localhost:27017/mestodb", {
 });
 
 const app = express();
+const allowedCors = [
+  "http://project.mesto.nomoredomains.club/",
+  "https://project.mesto.nomoredomains.club/",
+  "localhost:3000",
+];
+
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(requestLogger);
+app.use(function (req, res, next) {
+  const { origin } = req.headers;
+  const { method } = req;
+  const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE";
+  const requestHeaders = req.headers["access-control-request-headers"];
+  if (allowedCors.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
+  if (method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", DEFAULT_ALLOWED_METHODS);
+    res.header("Access-Control-Allow-Headers", requestHeaders);
+    return res.end();
+  }
+  next();
+});
 app.post(
   "/signup",
   celebrate({
