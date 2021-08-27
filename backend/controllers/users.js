@@ -15,7 +15,7 @@ const UNAUTHORIZED = require("../errors/UNAUTHORIZED");
 const NOT_FOUND = require("../errors/NOT_FOUND");
 const CONFLICT = require("../errors/CONFLICT");
 
-document.cookie = "domain=http://project.mesto.nomoredomains.club/";
+document.cookie = "domain=api.project.mesto.nomoredomains.rocks";
 
 const OK = 200;
 const CREATED = 201;
