@@ -44,7 +44,7 @@ export function userToken(token) {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   }).then((res) => getAnswer(res));
 }
