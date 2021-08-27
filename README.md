@@ -15,4 +15,12 @@
 <br />
 <br />
 
-# [ссылка на GitHub Pages](https://bukingemskiy.github.io/mesto/)
+# [ссылка на фронтенд](http://project.mesto.nomoredomains.club/)
+
+<br />
+
+# [ссылка на бэкенд](https://api.project.mesto.nomoredomains.rocks/)
+
+<br />
+
+## **ip адрес сервера** _193.32.218.92_
