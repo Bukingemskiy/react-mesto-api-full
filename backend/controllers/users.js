@@ -15,8 +15,6 @@ const UNAUTHORIZED = require("../errors/UNAUTHORIZED");
 const NOT_FOUND = require("../errors/NOT_FOUND");
 const CONFLICT = require("../errors/CONFLICT");
 
-document.cookie = "domain=api.project.mesto.nomoredomains.rocks";
-
 const OK = 200;
 const CREATED = 201;
 const { NODE_ENV, JWT_SECRET } = process.env;
@@ -122,6 +120,7 @@ const login = (req, res, next) => {
               httpOnly: true,
               sameSite: "None",
               secure: true,
+              domain: "http://project.mesto.nomoredomains.club",
             })
             .status(OK)
             .send({ token });

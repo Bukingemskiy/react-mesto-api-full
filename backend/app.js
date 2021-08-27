@@ -17,7 +17,6 @@ const usersRoute = require("./routes/users");
 const cardsRoute = require("./routes/cards");
 const NOT_FOUND = require("./errors/NOT_FOUND");
 
-document.cookie = "domain=api.project.mesto.nomoredomains.rocks";
 const { PORT = 3000 } = process.env;
 mongoose.connect("mongodb://localhost:27017/mestodb", {
   useNewUrlParser: true,
