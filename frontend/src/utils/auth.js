@@ -10,6 +10,7 @@ function getAnswer(res) {
 export function signUp(email, password) {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
+    credentials: "include",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -24,6 +25,7 @@ export function signUp(email, password) {
 export function signIn(email, password) {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
+    credentials: "include",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -38,6 +40,7 @@ export function signIn(email, password) {
 export function userToken(token) {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
+    credentials: "include",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
