@@ -115,7 +115,7 @@ const login = (req, res, next) => {
           );
           res
             .cookie("jwt", token, {
-              expires: new Date(Date.now() + 60 * 24 * 3600000),
+              maxAge: 3600000 * 24 * 90,
               httpOnly: true,
               sameSite: true,
             })

@@ -11,14 +11,15 @@ class Api {
   }
 
   getUserData() {
-    return fetch(`${this._address}/users/me `).then((res) =>
-      this._getAnswer(res)
+    return fetch(`${this._address}/users/me `, { credentials: "include" }).then(
+      (res) => this._getAnswer(res)
     );
   }
 
   editProfile(data) {
     return fetch(`${this._address}/users/me `, {
       method: "PATCH",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -29,6 +30,7 @@ class Api {
   updateImage(data) {
     return fetch(`${this._address}/users/me/avatar `, {
       method: "PATCH",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -39,6 +41,7 @@ class Api {
   makeCard(data) {
     return fetch(`${this._address}/cards`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -47,24 +50,29 @@ class Api {
   }
 
   getCards() {
-    return fetch(`${this._address}/cards`).then((res) => this._getAnswer(res));
+    return fetch(`${this._address}/cards`, { credentials: "include" }).then(
+      (res) => this._getAnswer(res)
+    );
   }
 
   deleteCard(id) {
     return fetch(`${this._address}/cards/${id}`, {
       method: "DELETE",
+      credentials: "include",
     }).then((res) => this._getAnswer(res));
   }
 
   likeOn(id) {
     return fetch(`${this._address}/cards/likes/${id}`, {
       method: "PUT",
+      credentials: "include",
     }).then((res) => this._getAnswer(res));
   }
 
   likeOff(id) {
     return fetch(`${this._address}/cards/likes/${id}`, {
       method: "DELETE",
+      credentials: "include",
     }).then((res) => this._getAnswer(res));
   }
 
