@@ -114,7 +114,11 @@ const login = (req, res, next) => {
             }
           );
           res
-            .cookie("jwt", token, { httpOnly: true, sameSite: true })
+            .cookie("jwt", token, {
+              expires: new Date(Date.now() + 60 * 24 * 3600000),
+              httpOnly: true,
+              sameSite: true,
+            })
             .status(OK)
             .send({ token });
         }
