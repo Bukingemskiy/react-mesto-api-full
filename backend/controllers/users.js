@@ -120,7 +120,7 @@ const login = (req, res, next) => {
               httpOnly: true,
               sameSite: "None",
               secure: true,
-              domain: "http://project.mesto.nomoredomains.club",
+              domain: "http://api.project.mesto.nomoredomains.rocks",
             })
             .status(OK)
             .send({ token });
