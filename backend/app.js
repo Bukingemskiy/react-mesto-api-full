@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-console */
 /* eslint-disable quotes */
@@ -16,6 +17,7 @@ const usersRoute = require("./routes/users");
 const cardsRoute = require("./routes/cards");
 const NOT_FOUND = require("./errors/NOT_FOUND");
 
+document.cookie = "domain=http://project.mesto.nomoredomains.club/";
 const { PORT = 3000 } = process.env;
 mongoose.connect("mongodb://localhost:27017/mestodb", {
   useNewUrlParser: true,

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-else-return */
 /* eslint-disable consistent-return */
 /* eslint-disable object-curly-newline */
@@ -13,6 +14,8 @@ const BAD_REQUEST = require("../errors/BAD_REQUEST");
 const UNAUTHORIZED = require("../errors/UNAUTHORIZED");
 const NOT_FOUND = require("../errors/NOT_FOUND");
 const CONFLICT = require("../errors/CONFLICT");
+
+document.cookie = "domain=http://project.mesto.nomoredomains.club/";
 
 const OK = 200;
 const CREATED = 201;
