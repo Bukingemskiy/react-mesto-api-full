@@ -49,7 +49,7 @@ function Main(props) {
         </section>
         <section className="elements">
           {props.isCardsLoading && <p className="profile">LOADING...</p>}
-          {props.cards.map((card) => (
+          {props.cards.data.map((card) => (
             <Card
               card={card}
               key={card._id}
