@@ -138,7 +138,7 @@ const login = (req, res, next) => {
 
 const updateProfileUser = (req, res, next) => {
   const { name, about } = req.body;
-  const userId = req.user.id;
+  const userId = req.user._id;
   User.findByIdAndUpdate(
     userId,
     { name, about },
@@ -166,7 +166,7 @@ const updateProfileUser = (req, res, next) => {
 
 const updateAvatarUser = (req, res, next) => {
   const { avatar } = req.body;
-  const userId = req.user.id;
+  const userId = req.user._id;
   User.findByIdAndUpdate(
     userId,
     { avatar },

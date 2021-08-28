@@ -109,7 +109,7 @@ class Api {
 }
 
 const config = {
-  address: "https://api.project.mesto.nomoredomains.rocks",
+  address: "http://api.project.mesto.nomoredomains.rocks",
 };
 
 const api = new Api(config);
