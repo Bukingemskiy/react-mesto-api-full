@@ -28,7 +28,7 @@ const getUsers = (req, res, next) => {
 };
 
 const getUser = (req, res, next) => {
-  const userId = req.user._id;
+  const { userId } = req.params;
   User.findById(userId)
     .orFail(new Error("NotFound"))
     .then((user) => res.status(OK).send({ data: user }))
@@ -119,8 +119,8 @@ const login = (req, res, next) => {
             .cookie("jwt", token, {
               maxAge: 3600000 * 24 * 90,
               httpOnly: true,
-              // sameSite: "None",
-              // secure: true,
+              sameSite: "None",
+              secure: true,
             })
             .status(OK)
             .send({ token });
