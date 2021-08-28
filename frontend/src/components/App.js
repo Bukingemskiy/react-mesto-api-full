@@ -191,9 +191,16 @@ function App() {
   }
 
   function logOut() {
-    localStorage.removeItem("token");
-    setUserEmail("");
-    setLoggedIn(false);
+    auth
+      .signOut()
+      .then(() => {
+        localStorage.removeItem("token");
+        setUserEmail("");
+        setLoggedIn(false);
+      })
+      .catch((err) => {
+        console.log(`${err}`);
+      });
   }
 
   return (

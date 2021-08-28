@@ -192,6 +192,9 @@ const updateAvatarUser = (req, res, next) => {
     });
 };
 
+const signOut = (req, res) =>
+  res.clearCookie("jwt").send({ message: "Cookies удалены" });
+
 module.exports = {
   getUsers,
   getUser,
@@ -200,4 +203,5 @@ module.exports = {
   login,
   updateProfileUser,
   updateAvatarUser,
+  signOut,
 };

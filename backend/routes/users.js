@@ -4,6 +4,7 @@
 const { celebrate, Joi } = require("celebrate");
 const router = require("express").Router();
 const {
+  signOut,
   getUsers,
   getUser,
   getOwnerUser,
@@ -11,6 +12,7 @@ const {
   updateAvatarUser,
 } = require("../controllers/users");
 
+router.get("/signout", signOut);
 router.get("/", getUsers);
 router.get("/me", getOwnerUser);
 router.get(

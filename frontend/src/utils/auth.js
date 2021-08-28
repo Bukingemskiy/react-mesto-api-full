@@ -48,3 +48,9 @@ export function userToken(token) {
     },
   }).then((res) => getAnswer(res));
 }
+
+export function signOut() {
+  return fetch(`${BASE_URL}/users/signout`, {
+    credentials: "include",
+  }).then((res) => getAnswer(res));
+}
