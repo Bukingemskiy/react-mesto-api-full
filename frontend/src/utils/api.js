@@ -106,7 +106,7 @@ class Api {
 
 const config = {
   address: "https://mesto.nomoreparties.co/v1/",
-  //  token: "22c6286b-d5fa-40bf-b483-a71816fa51e0",
+  token: "22c6286b-d5fa-40bf-b483-a71816fa51e0",
 };
 
 const api = new Api(config);
