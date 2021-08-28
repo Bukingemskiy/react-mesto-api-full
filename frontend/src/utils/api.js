@@ -1,7 +1,6 @@
 class Api {
-  constructor({ address, token }) {
+  constructor({ address }) {
     this._address = address;
-    this._token = token;
   }
 
   _getAnswer(res) {
@@ -12,20 +11,16 @@ class Api {
   }
 
   getUserData() {
-    return fetch(`${this._address}/users/me `, {
-      credentials: "include",
-      headers: {
-        authorization: this._token,
-      },
-    }).then((res) => this._getAnswer(res));
+    return fetch(`${this._address}/users/me `, { credentials: "include" }).then(
+      (res) => this._getAnswer(res)
+    );
   }
 
   editProfile(data) {
     return fetch(`${this._address}/users/me `, {
-      credentials: "include",
       method: "PATCH",
+      credentials: "include",
       headers: {
-        authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: data.name, about: data.about }),
@@ -34,10 +29,9 @@ class Api {
 
   updateImage(data) {
     return fetch(`${this._address}/users/me/avatar `, {
-      credentials: "include",
       method: "PATCH",
+      credentials: "include",
       headers: {
-        authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ avatar: data.avatar }),
@@ -46,10 +40,9 @@ class Api {
 
   makeCard(data) {
     return fetch(`${this._address}/cards`, {
-      credentials: "include",
       method: "POST",
+      credentials: "include",
       headers: {
-        Authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: data.name, link: data.link }),
@@ -57,41 +50,29 @@ class Api {
   }
 
   getCards() {
-    return fetch(`${this._address}/cards`, {
-      credentials: "include",
-      headers: {
-        Authorization: this._token,
-      },
-    }).then((res) => this._getAnswer(res));
+    return fetch(`${this._address}/cards`, { credentials: "include" }).then(
+      (res) => this._getAnswer(res)
+    );
   }
 
   deleteCard(id) {
     return fetch(`${this._address}/cards/${id}`, {
-      credentials: "include",
       method: "DELETE",
-      headers: {
-        Authorization: this._token,
-      },
+      credentials: "include",
     }).then((res) => this._getAnswer(res));
   }
 
   likeOn(id) {
     return fetch(`${this._address}/cards/likes/${id}`, {
-      credentials: "include",
       method: "PUT",
-      headers: {
-        Authorization: this._token,
-      },
+      credentials: "include",
     }).then((res) => this._getAnswer(res));
   }
 
   likeOff(id) {
     return fetch(`${this._address}/cards/likes/${id}`, {
-      credentials: "include",
       method: "DELETE",
-      headers: {
-        Authorization: this._token,
-      },
+      credentials: "include",
     }).then((res) => this._getAnswer(res));
   }
 
@@ -105,8 +86,7 @@ class Api {
 }
 
 const config = {
-  address: "https://mesto.nomoreparties.co/v1/",
-  token: "22c6286b-d5fa-40bf-b483-a71816fa51e0",
+  address: "http://api.project.mesto.nomoredomains.rocks",
 };
 
 const api = new Api(config);

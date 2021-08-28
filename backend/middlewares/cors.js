@@ -7,6 +7,8 @@ const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE";
 const allowedCors = [
   "http://project.mesto.nomoredomains.club",
   "https://project.mesto.nomoredomains.club",
+  "http://api.project.mesto.nomoredomains.rocks",
+  "https://api.project.mesto.nomoredomains.rocks",
   "localhost:3000",
 ];
 
