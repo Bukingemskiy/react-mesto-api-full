@@ -52,5 +52,9 @@ export function userToken(token) {
 export function signOut() {
   return fetch(`${BASE_URL}/users/signout`, {
     credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
   }).then((res) => getAnswer(res));
 }

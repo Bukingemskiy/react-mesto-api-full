@@ -13,6 +13,9 @@ class Api {
   getUserData() {
     return fetch(`${this._address}/users/me `, {
       credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
     }).then((res) => this._getAnswer(res));
   }
 
@@ -52,6 +55,9 @@ class Api {
   getCards() {
     return fetch(`${this._address}/cards`, {
       credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
     }).then((res) => this._getAnswer(res));
   }
 
@@ -59,6 +65,9 @@ class Api {
     return fetch(`${this._address}/cards/${id}`, {
       credentials: "include",
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
     }).then((res) => this._getAnswer(res));
   }
 
@@ -66,6 +75,9 @@ class Api {
     return fetch(`${this._address}/cards/likes/${id}`, {
       credentials: "include",
       method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
     }).then((res) => this._getAnswer(res));
   }
 
@@ -73,6 +85,9 @@ class Api {
     return fetch(`${this._address}/cards/likes/${id}`, {
       credentials: "include",
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
     }).then((res) => this._getAnswer(res));
   }
 
