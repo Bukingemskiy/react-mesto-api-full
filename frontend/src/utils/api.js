@@ -106,7 +106,7 @@ class Api {
 
 const config = {
   address: "http://project.mesto.nomoredomains.club",
-  //token: "22c6286b-d5fa-40bf-b483-a71816fa51e0",
+  token: "22c6286b-d5fa-40bf-b483-a71816fa51e0",
 };
 
 const api = new Api(config);
