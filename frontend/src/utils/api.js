@@ -14,6 +14,7 @@ class Api {
     return fetch(`${this._address}/users/me `, {
       credentials: "include",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
     }).then((res) => this._getAnswer(res));
@@ -24,6 +25,7 @@ class Api {
       credentials: "include",
       method: "PATCH",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: data.name, about: data.about }),
@@ -35,6 +37,7 @@ class Api {
       credentials: "include",
       method: "PATCH",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ avatar: data.avatar }),
@@ -46,6 +49,7 @@ class Api {
       credentials: "include",
       method: "POST",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: data.name, link: data.link }),
@@ -56,6 +60,7 @@ class Api {
     return fetch(`${this._address}/cards`, {
       credentials: "include",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
     }).then((res) => this._getAnswer(res));
@@ -66,6 +71,7 @@ class Api {
       credentials: "include",
       method: "DELETE",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
     }).then((res) => this._getAnswer(res));
@@ -76,6 +82,7 @@ class Api {
       credentials: "include",
       method: "PUT",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
     }).then((res) => this._getAnswer(res));
@@ -86,6 +93,7 @@ class Api {
       credentials: "include",
       method: "DELETE",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
     }).then((res) => this._getAnswer(res));
