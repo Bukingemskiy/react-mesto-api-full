@@ -17,7 +17,7 @@ class Api {
   }
 
   editProfile(data) {
-    return fetch(`${this._address}$/users/me `, {
+    return fetch(`${this._address}/users/me `, {
       credentials: "include",
       method: "PATCH",
       headers: {
