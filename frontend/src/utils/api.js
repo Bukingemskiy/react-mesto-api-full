@@ -1,6 +1,7 @@
 class Api {
-  constructor({ address }) {
+  constructor({ address, headers }) {
     this._address = address;
+    this._headers = headers;
   }
 
   _getAnswer(res) {
@@ -13,10 +14,7 @@ class Api {
   getUserData() {
     return fetch(`${this._address}/users/me `, {
       credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
     }).then((res) => this._getAnswer(res));
   }
 
@@ -24,10 +22,7 @@ class Api {
     return fetch(`${this._address}/users/me `, {
       credentials: "include",
       method: "PATCH",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({ name: data.name, about: data.about }),
     }).then((res) => this._getAnswer(res));
   }
@@ -36,10 +31,7 @@ class Api {
     return fetch(`${this._address}/users/me/avatar `, {
       credentials: "include",
       method: "PATCH",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({ avatar: data.avatar }),
     }).then((res) => this._getAnswer(res));
   }
@@ -48,10 +40,7 @@ class Api {
     return fetch(`${this._address}/cards`, {
       credentials: "include",
       method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({ name: data.name, link: data.link }),
     }).then((res) => this._getAnswer(res));
   }
@@ -59,10 +48,7 @@ class Api {
   getCards() {
     return fetch(`${this._address}/cards`, {
       credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
     }).then((res) => this._getAnswer(res));
   }
 
@@ -70,10 +56,7 @@ class Api {
     return fetch(`${this._address}/cards/${id}`, {
       credentials: "include",
       method: "DELETE",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
     }).then((res) => this._getAnswer(res));
   }
 
@@ -81,10 +64,7 @@ class Api {
     return fetch(`${this._address}/cards/likes/${id}`, {
       credentials: "include",
       method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
     }).then((res) => this._getAnswer(res));
   }
 
@@ -92,10 +72,7 @@ class Api {
     return fetch(`${this._address}/cards/likes/${id}`, {
       credentials: "include",
       method: "DELETE",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
     }).then((res) => this._getAnswer(res));
   }
 
@@ -110,6 +87,10 @@ class Api {
 
 const config = {
   address: "https://api.project.mesto.nomoredomains.rocks",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
 };
 
 const api = new Api(config);
