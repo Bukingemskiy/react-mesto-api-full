@@ -37,14 +37,13 @@ export function signIn(email, password) {
   }).then((res) => getAnswer(res));
 }
 
-export function userToken(token) {
+export function userToken() {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     credentials: "include",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
   }).then((res) => getAnswer(res));
 }

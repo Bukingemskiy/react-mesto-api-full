@@ -1,7 +1,6 @@
 class Api {
-  constructor({ address, token }) {
+  constructor(address) {
     this._address = address;
-    this._token = token;
   }
 
   _getAnswer(res) {
@@ -14,9 +13,6 @@ class Api {
   getUserData() {
     return fetch(`${this._address}/users/me `, {
       credentials: "include",
-      headers: {
-        Authorization: this._token,
-      },
     }).then((res) => this._getAnswer(res));
   }
 
@@ -25,7 +21,6 @@ class Api {
       credentials: "include",
       method: "PATCH",
       headers: {
-        Authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: data.name, about: data.about }),
@@ -37,7 +32,6 @@ class Api {
       credentials: "include",
       method: "PATCH",
       headers: {
-        Authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ avatar: data.avatar }),
@@ -49,7 +43,6 @@ class Api {
       credentials: "include",
       method: "POST",
       headers: {
-        Authorization: this._token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: data.name, link: data.link }),
@@ -59,9 +52,6 @@ class Api {
   getCards() {
     return fetch(`${this._address}/cards`, {
       credentials: "include",
-      headers: {
-        Authorization: this._token,
-      },
     }).then((res) => this._getAnswer(res));
   }
 
@@ -69,9 +59,6 @@ class Api {
     return fetch(`${this._address}/cards/${id}`, {
       credentials: "include",
       method: "DELETE",
-      headers: {
-        Authorization: this._token,
-      },
     }).then((res) => this._getAnswer(res));
   }
 
@@ -79,9 +66,6 @@ class Api {
     return fetch(`${this._address}/cards/likes/${id}`, {
       credentials: "include",
       method: "PUT",
-      headers: {
-        Authorization: this._token,
-      },
     }).then((res) => this._getAnswer(res));
   }
 
@@ -89,9 +73,6 @@ class Api {
     return fetch(`${this._address}/cards/likes/${id}`, {
       credentials: "include",
       method: "DELETE",
-      headers: {
-        Authorization: this._token,
-      },
     }).then((res) => this._getAnswer(res));
   }
 
@@ -105,8 +86,7 @@ class Api {
 }
 
 const config = {
-  address: "http://project.mesto.nomoredomains.club",
-  token: "22c6286b-d5fa-40bf-b483-a71816fa51e0",
+  address: "https://api.project.mesto.nomoredomains.rocks",
 };
 
 const api = new Api(config);
