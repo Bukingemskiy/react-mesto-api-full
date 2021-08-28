@@ -1,5 +1,5 @@
 class Api {
-  constructor(address) {
+  constructor({ address }) {
     this._address = address;
   }
 
