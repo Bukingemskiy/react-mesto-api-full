@@ -49,6 +49,7 @@ function App() {
     Promise.all([api.getUserData(), api.getCards()])
       .then(([user, cards]) => {
         setCurrentUser(user);
+        console.log(cards);
         setCards(cards);
       })
       .catch((err) => console.log(`${err}`))
