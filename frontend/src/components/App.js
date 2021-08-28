@@ -222,7 +222,7 @@ function App() {
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
             isCardsLoading={isCardsLoading}
-            cards={cards}
+            cards={cards.data}
             component={Main}
           />
           <Route path="/sign-up">
