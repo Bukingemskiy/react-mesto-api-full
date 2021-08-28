@@ -51,6 +51,7 @@ function App() {
         setCurrentUser(userInfo);
         console.log(userCards);
         setCards(userCards.data);
+        console.log(cards);
       })
       .catch((err) => console.log(`${err}`))
       .finally(() => setIsCardsLoading(false));
