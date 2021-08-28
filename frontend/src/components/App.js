@@ -47,10 +47,10 @@ function App() {
   React.useEffect(() => {
     setIsCardsLoading(true);
     Promise.all([api.getUserData(), api.getCards()])
-      .then(([user, cards]) => {
-        setCurrentUser(user);
-        console.log(cards.data);
-        setCards(cards);
+      .then(([userInfo, userCards]) => {
+        setCurrentUser(userInfo);
+        console.log(userCards);
+        setCards(userCards.data);
       })
       .catch((err) => console.log(`${err}`))
       .finally(() => setIsCardsLoading(false));
@@ -223,7 +223,7 @@ function App() {
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
             isCardsLoading={isCardsLoading}
-            cards={cards.data}
+            cards={cards}
             component={Main}
           />
           <Route path="/sign-up">
