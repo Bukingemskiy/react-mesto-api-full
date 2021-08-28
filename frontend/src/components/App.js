@@ -48,10 +48,8 @@ function App() {
     setIsCardsLoading(true);
     Promise.all([api.getUserData(), api.getCards()])
       .then(([userInfo, userCards]) => {
-        setCurrentUser(userInfo);
-        console.log(userCards);
+        setCurrentUser(userInfo.data);
         setCards(userCards.data);
-        console.log(cards);
       })
       .catch((err) => console.log(`${err}`))
       .finally(() => setIsCardsLoading(false));
