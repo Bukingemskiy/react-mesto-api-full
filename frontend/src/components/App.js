@@ -134,7 +134,7 @@ function App() {
       .then((avatar) => {
         console.log(data);
         console.log(avatar);
-        setCurrentUser(avatar);
+        setCurrentUser(avatar.data);
         closeAllPopups();
       })
       .catch((err) => console.log(`${err}`))
