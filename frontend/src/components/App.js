@@ -134,9 +134,6 @@ function App() {
     api
       .makeCard(data)
       .then((newCard) => {
-        console.log(data);
-        console.log(newCard);
-        console.log(cards);
         setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
@@ -201,6 +198,7 @@ function App() {
     auth
       .signOut()
       .then(() => {
+        console.log(localStorage);
         localStorage.removeItem("token");
         setUserEmail("");
         setLoggedIn(false);
