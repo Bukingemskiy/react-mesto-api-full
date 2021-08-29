@@ -26,23 +26,28 @@ function App() {
     link: "",
   });
   const [isLoading, setIsLoading] = React.useState(false);
-  const [isCardsLoading, setIsCardsLoading] = React.useState(false);
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [isInfoTooltip, setIsInfoTooltip] = React.useState(false);
   const [userEmail, setUserEmail] = React.useState("");
   const [isRegister, setIsRegister] = React.useState(false);
+  const [isCardsLoading, setIsCardsLoading] = React.useState(false);
   const history = useHistory();
 
   React.useEffect(() => {
     setIsCardsLoading(true);
+    updatePage().finally(() => setIsCardsLoading(false));
+  }, []);
+
+  function updatePage() {
     Promise.all([api.getUserData(), api.getCards()])
       .then(([userInfo, userCards]) => {
         setCurrentUser(userInfo.data);
         setCards(userCards.data);
+        setUserEmail(userInfo.email);
+        setLoggedIn(true);
       })
-      .catch((err) => console.log(`${err}`))
-      .finally(() => setIsCardsLoading(false));
-  }, []);
+      .catch((err) => console.log(`${err}`));
+  }
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
@@ -149,8 +154,9 @@ function App() {
   function handleLogin(email, password) {
     return auth
       .signIn(email, password)
-      .then((data) => {
+      .then(() => {
         setLoggedIn(true);
+        updatePage();
         history.push("/");
       })
       .catch((err) => {
