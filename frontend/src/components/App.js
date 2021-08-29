@@ -80,11 +80,11 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i.data._id === currentUser._id);
     console.log(isLiked);
     console.log(card._id);
     console.log(card.likes);
-    console.log(currentUser);
+    console.log(currentUser._id);
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
@@ -118,8 +118,6 @@ function App() {
     api
       .editProfile(data)
       .then((user) => {
-        console.log(user);
-        console.log(data);
         setCurrentUser(user.data);
         closeAllPopups();
       })
@@ -132,8 +130,6 @@ function App() {
     api
       .updateImage(data)
       .then((avatar) => {
-        console.log(data);
-        console.log(avatar);
         setCurrentUser(avatar.data);
         closeAllPopups();
       })
