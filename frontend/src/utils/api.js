@@ -61,7 +61,7 @@ class Api {
   }
 
   likeOn(id) {
-    return fetch(`${this._address}/cards/likes/${id}`, {
+    return fetch(`${this._address}/cards/${id}/likes`, {
       credentials: "include",
       method: "PUT",
       headers: this._headers,
@@ -69,7 +69,7 @@ class Api {
   }
 
   likeOff(id) {
-    return fetch(`${this._address}/cards/likes/${id}`, {
+    return fetch(`${this._address}/cards/${id}/likes`, {
       credentials: "include",
       method: "DELETE",
       headers: this._headers,
