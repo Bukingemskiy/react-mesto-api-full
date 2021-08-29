@@ -35,6 +35,16 @@ function App() {
   const history = useHistory();
 
   React.useEffect(() => {
+    checkToken();
+  }, [loggedIn]);
+
+  React.useEffect(() => {
+    if (loggedIn) {
+      history.push("/");
+    }
+  });
+
+  React.useEffect(() => {
     setIsCardsLoading(true);
     Promise.all([api.getUserData(), api.getCards()])
       .then(([userInfo, userCards]) => {
@@ -133,6 +143,7 @@ function App() {
       .signUp(email, password)
       .then((res) => {
         if (res) {
+          localStorage.setItem("token", res.token);
           history.push("/sign-in");
           setIsInfoTooltip(true);
           setIsRegister(true);
@@ -150,7 +161,8 @@ function App() {
   function handleLogin(email, password) {
     return auth
       .signIn(email, password)
-      .then(() => {
+      .then((data) => {
+        localStorage.setItem("token", data.token);
         setLoggedIn(true);
         history.push("/");
       })
@@ -161,10 +173,29 @@ function App() {
       });
   }
 
+  function checkToken() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      auth
+        .userToken(token)
+        .then((res) => {
+          setUserEmail(res.data.email);
+          setLoggedIn(true);
+        })
+        .catch((err) => {
+          console.log(`${err}`);
+        });
+    } else {
+      console.log("Токен отсутствует!");
+      return;
+    }
+  }
+
   function logOut() {
     auth
       .signOut()
       .then(() => {
+        localStorage.removeItem("token");
         setUserEmail("");
         setLoggedIn(false);
       })

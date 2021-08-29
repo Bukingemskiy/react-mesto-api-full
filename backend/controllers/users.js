@@ -193,9 +193,7 @@ const updateAvatarUser = (req, res, next) => {
 };
 
 const signOut = (req, res) =>
-  res
-    .clearCookie("jwt", { path: "/sign-up" })
-    .send({ message: "Cookies удалены" });
+  res.clearCookie("jwt").send({ message: "Cookies удалены" });
 
 module.exports = {
   getUsers,
