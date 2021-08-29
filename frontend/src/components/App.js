@@ -33,12 +33,8 @@ function App() {
   const [isCardsLoading, setIsCardsLoading] = React.useState(false);
   const history = useHistory();
 
-  React.useEffect(() => {
-    setIsCardsLoading(true);
-    updatePage().finally(() => setIsCardsLoading(false));
-  }, []);
-
   function updatePage() {
+    setIsCardsLoading(true);
     Promise.all([api.getUserData(), api.getCards()])
       .then(([userInfo, userCards]) => {
         setCurrentUser(userInfo.data);
@@ -46,8 +42,13 @@ function App() {
         setUserEmail(userInfo.email);
         setLoggedIn(true);
       })
-      .catch((err) => console.log(`${err}`));
+      .catch((err) => console.log(`${err}`))
+      .finally(() => setIsCardsLoading(false));
   }
+
+  React.useEffect(() => {
+    updatePage();
+  }, []);
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
