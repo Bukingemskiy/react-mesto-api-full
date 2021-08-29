@@ -39,9 +39,7 @@ function App() {
       .then(([userInfo, userCards]) => {
         setCurrentUser(userInfo.data);
         setCards(userCards.data);
-        setUserEmail(userInfo.email);
-        console.log(userEmail);
-        console.log(userInfo);
+        setUserEmail(userInfo.data.email);
         setLoggedIn(true);
       })
       .catch((err) => console.log(`${err}`))
