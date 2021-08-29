@@ -195,17 +195,12 @@ function App() {
   }
 
   function logOut() {
-    auth
-      .signOut()
-      .then(() => {
-        console.log(localStorage);
-        localStorage.removeItem("token");
-        setUserEmail("");
-        setLoggedIn(false);
-      })
-      .catch((err) => {
-        console.log(`${err}`);
-      });
+    auth.signOut().catch((err) => {
+      console.log(`${err}`);
+      localStorage.removeItem("token");
+      setUserEmail("");
+      setLoggedIn(false);
+    });
   }
 
   return (
