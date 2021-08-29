@@ -9,7 +9,6 @@ import ImagePopup from "./ImagePopup.js";
 import Login from "./Login.js";
 import Register from "./Register.js";
 import InfoTooltip from "./InfoTooltip.js";
-import ProtectedRoute from "./ProtectedRoute.js";
 import api from "../utils/api.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 import * as auth from "../utils/auth.js";
@@ -33,16 +32,6 @@ function App() {
   const [userEmail, setUserEmail] = React.useState("");
   const [isRegister, setIsRegister] = React.useState(false);
   const history = useHistory();
-
-  React.useEffect(() => {
-    checkToken();
-  }, [loggedIn]);
-
-  React.useEffect(() => {
-    if (loggedIn) {
-      history.push("/");
-    }
-  });
 
   React.useEffect(() => {
     setIsCardsLoading(true);
@@ -143,7 +132,6 @@ function App() {
       .signUp(email, password)
       .then((res) => {
         if (res) {
-          localStorage.setItem("token", res.token);
           history.push("/sign-in");
           setIsInfoTooltip(true);
           setIsRegister(true);
@@ -162,7 +150,6 @@ function App() {
     return auth
       .signIn(email, password)
       .then((data) => {
-        localStorage.setItem("token", data.token);
         setLoggedIn(true);
         history.push("/");
       })
@@ -173,29 +160,10 @@ function App() {
       });
   }
 
-  function checkToken() {
-    const token = localStorage.getItem("token");
-    if (token) {
-      auth
-        .userToken(token)
-        .then((res) => {
-          setUserEmail(res.data.email);
-          setLoggedIn(true);
-        })
-        .catch((err) => {
-          console.log(`${err}`);
-        });
-    } else {
-      console.log("Токен отсутствует!");
-      return;
-    }
-  }
-
   function logOut() {
     auth
       .signOut()
       .then(() => {
-        localStorage.removeItem("token");
         setUserEmail("");
         setLoggedIn(false);
       })
@@ -208,22 +176,22 @@ function App() {
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
         <Switch>
-          <ProtectedRoute
-            exact
-            path="/"
-            loggedIn={loggedIn}
-            userEmail={userEmail}
-            onExitClick={logOut}
-            onEditAvatar={handleEditAvatarClick}
-            onEditProfile={handleEditProfileClick}
-            onAddPlace={handleAddPlaceClick}
-            onCardClick={handleCardClick}
-            onCardLike={handleCardLike}
-            onCardDelete={handleCardDelete}
-            isCardsLoading={isCardsLoading}
-            cards={cards}
-            component={Main}
-          />
+          <Route exact path="/">
+            <Main
+              loggedIn={loggedIn}
+              userEmail={userEmail}
+              onExitClick={logOut}
+              onEditAvatar={handleEditAvatarClick}
+              onEditProfile={handleEditProfileClick}
+              onAddPlace={handleAddPlaceClick}
+              onCardClick={handleCardClick}
+              onCardLike={handleCardLike}
+              onCardDelete={handleCardDelete}
+              isCardsLoading={isCardsLoading}
+              cards={cards}
+            />{" "}
+          </Route>
+
           <Route path="/sign-up">
             <Register onRegister={handleRegister} />
           </Route>
