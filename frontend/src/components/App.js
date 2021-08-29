@@ -217,7 +217,7 @@ function App() {
             loggedIn={loggedIn}
             userEmail={userEmail}
             onExitClick={logOut}
-            link="sign-up"
+            link=""
             headerLink="Выйти"
             onEditAvatar={handleEditAvatarClick}
             onEditProfile={handleEditProfileClick}
