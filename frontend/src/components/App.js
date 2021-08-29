@@ -217,8 +217,6 @@ function App() {
             loggedIn={loggedIn}
             userEmail={userEmail}
             onExitClick={logOut}
-            link=""
-            headerLink="Выйти"
             onEditAvatar={handleEditAvatarClick}
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
