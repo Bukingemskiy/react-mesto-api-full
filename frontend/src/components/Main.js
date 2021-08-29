@@ -13,7 +13,7 @@ function Main(props) {
         loggedIn={props.loggedIn}
         userEmail={props.userEmail}
         onExitClick={props.logOut}
-        link="users/signout"
+        link="/"
         headerLink="Выйти"
       />
       <main className="content">
