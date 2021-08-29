@@ -12,8 +12,8 @@ const {
   updateAvatarUser,
 } = require("../controllers/users");
 
-router.get("/signout", signOut);
 router.get("/", getUsers);
+router.get("/signout", signOut);
 router.get("/me", getOwnerUser);
 router.get(
   "/:userId",
