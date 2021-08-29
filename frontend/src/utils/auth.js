@@ -35,16 +35,6 @@ export function signIn(email, password) {
   }).then((res) => getAnswer(res));
 }
 
-export function userToken() {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: "GET",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((res) => getAnswer(res));
-}
-
 export function signOut() {
   return fetch(`${BASE_URL}/users/signout`, {
     credentials: "include",
