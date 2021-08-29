@@ -137,7 +137,7 @@ function App() {
         console.log(data);
         console.log(newCard);
         console.log(cards);
-        setCards([newCard, ...cards]);
+        setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
       .catch((err) => console.log(`${err}`))
