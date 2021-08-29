@@ -64,13 +64,19 @@ function Header(props) {
           }}
         >
           <div className="header__email">{props.userEmail}</div>
-          <Link
-            to={props.link}
-            onClick={props.onExitClick}
-            className="header__link"
-          >
-            {props.headerLink}
-          </Link>
+          {props.loggedIn ? (
+            <Link to="/" className="header__link" onClick={props.onSignOut}>
+              Выйти
+            </Link>
+          ) : (
+            <Link
+              to={props.link}
+              onClick={props.onExitClick}
+              className="header__link"
+            >
+              {props.headerLink}
+            </Link>
+          )}
         </div>
       </header>
     );
