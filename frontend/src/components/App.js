@@ -40,6 +40,8 @@ function App() {
         setCurrentUser(userInfo.data);
         setCards(userCards.data);
         setUserEmail(userInfo.email);
+        console.log(userEmail);
+        console.log(userInfo);
         setLoggedIn(true);
       })
       .catch((err) => console.log(`${err}`))
