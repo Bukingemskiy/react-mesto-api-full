@@ -82,6 +82,7 @@ function App() {
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
     console.log(isLiked);
+    console.log(card._id);
     console.log(card.likes);
     console.log(currentUser);
     api
@@ -119,7 +120,7 @@ function App() {
       .then((user) => {
         console.log(user);
         console.log(data);
-        setCurrentUser(user);
+        setCurrentUser(user.data);
         closeAllPopups();
       })
       .catch((err) => console.log(`${err}`))
