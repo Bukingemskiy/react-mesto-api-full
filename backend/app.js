@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-console */
 /* eslint-disable quotes */

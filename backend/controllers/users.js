@@ -60,16 +60,10 @@ const getOwnerUser = (req, res, next) => {
 
 const createUser = (req, res, next) => {
   const { name, avatar, about, email, password } = req.body;
-  if (!email || !password) {
-    next(new BAD_REQUEST("Поля email и пароль должны быть заполнены"));
-    return;
-  }
   bcrypt.hash(password, 10).then((hash) => {
     User.create({ name, avatar, about, email, password: hash })
-      .then((user) =>
-        res.status(CREATED).send({
-          user,
-        })
+      .then(() =>
+        res.status(CREATED).send({ data: { name, about, avatar, email } })
       )
       .catch((err) => {
         if (err.name === "MongoError" && err.code === 11000) {

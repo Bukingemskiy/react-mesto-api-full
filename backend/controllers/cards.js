@@ -28,10 +28,14 @@ const deleteCard = (req, res, next) => {
       if (req.user._id !== card.owner.toString()) {
         next(new FORBIDDEN("Чужие карточки удалять нельзя"));
       } else {
-        card.remove();
-        res.status(OK).send({
-          message: "Карточка успешно удалена",
-        });
+        card
+          .remove()
+          .then(() =>
+            res.status(OK).send({
+              message: "Карточка успешно удалена",
+            })
+          )
+          .catch(next);
       }
     })
     .catch((err) => {
