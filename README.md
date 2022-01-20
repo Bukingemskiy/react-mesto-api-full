@@ -30,13 +30,15 @@
 
 ## frontend: 
 ## - Команда npm run start запускает сервер на localhost:3000.
-## - Команда npm run dev запускает сервер с хот релоудом на localhost:3000.
+## - Команда npm run build запускает сборку проекта.
 <br />
 
 ## backend: 
 ## - Команда npm run start запускает сервер на localhost:3000.
 ## - Команда npm run dev запускает сервер с хот релоудом на localhost:3000.
 <br />
+
+---
 
 # [ссылка на фронтенд](http://project.mesto.nomoredomains.club/)
 
