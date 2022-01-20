@@ -28,7 +28,7 @@
 <br />
 
 ## **ip адрес сервера** _178.154.202.107_
----
+
+<br />
+
 ### Проект "Mesto Russia" выполнен с использованием языков программирования: Hyper Text Mark Langyage, Cascading Style Sheets и JavaScript исключительно в развлекательных целях.
-<br />
-<br />
